@@ -33,6 +33,11 @@ Route::group(['prefix'=>'home/test'],function(){
 //控制器理由
 Route::get('test1','Admin\TestController@test1');
 Route::get('test2','Admin\TestController@test2');
+Route::get('test3','Admin\TestController@test3');
+Route::get('test4','Admin\TestController@test4');
+Route::get('test5','Admin\TestController@test5');
+Route::get('test6','Admin\TestController@test6');
+Route::post('test7','Admin\TestController@test7')->name('t7');
 //数据库的操作
 Route::get('add','Admin\TestController@add');
 Route::get('del','Admin\TestController@del');
