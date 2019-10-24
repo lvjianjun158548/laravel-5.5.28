@@ -11,20 +11,48 @@ class TestController extends Controller
 {
     //
     public function test1(){
-    	return view('test');
+        $date = date('Y-m-d H:m:i');
+        $uts = time();
+    	return view('test',['date'=>$date,'uts'=>$uts]);
     }
     public function test2(){
     	// dd(Input::get('name','qwertwq'));
     	dump(Input::only('name','id'));
     }
+    public function test3(){
+        // dd(Input::get('name','qwertwq'));
+       $res = Member::get();
+       // dump($res);
+       // die;
+       return view('test',compact('res'));
+    }
+    public function test4(){
+        $res = Member::get();
+        $day = date('N');
+       return view('test4',compact('day','res'));
+    }
+    public function test5(){
+        // echo '5342';
+        // die;
+        return view('child');
+    }
 
+    public function test6(){
+        // echo '5342';
+        // die;
+        return view('test6');
+    }
+    public function test7(){
+        $res = Input::all();
+        dump($res);
+    }
     public function add(){
     	// dd(Input::get('name','qwertwq'));
     	$res = DB::table('member')->insert(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
-        $res = DB::table('member')->insertGetId(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
+        //$res = DB::table('member')->insertGetId(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
         dump($res);
-        $res1 = Member::insert(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
-        $res1 = Member::insertGetId(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
+        $res1 = Member::insert(['name'=>'lvjianjun','age'=>28,'email'=>'wafedsa']);
+        //$res1 = Member::insertGetId(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
         dump($res1);
      // $mem = new Member();
      // $res = $mem->get();
