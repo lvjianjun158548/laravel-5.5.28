@@ -38,6 +38,9 @@ Route::get('test4','Admin\TestController@test4');
 Route::get('test5','Admin\TestController@test5');
 Route::get('test6','Admin\TestController@test6');
 Route::post('test7','Admin\TestController@test7')->name('t7');
+Route::get('test8','Admin\TestController@test8');
+Route::post('test9','Admin\TestController@test9')->name('t9');
+Route::get('test10','Admin\TestController@test10');
 //数据库的操作
 Route::get('add','Admin\TestController@add');
 Route::get('del','Admin\TestController@del');

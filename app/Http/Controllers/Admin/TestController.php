@@ -46,6 +46,34 @@ class TestController extends Controller
         $res = Input::all();
         dump($res);
     }
+    public function test8(){
+        return view('test8');
+    }
+    public function test9(Request $request){
+        $this -> validate($request,[
+            'name'=>'required|min:2|max:5',
+            'age'=>'required|integer|min:1|max:100',
+            'email'=>'email'
+            ],[ 'name.required'=>'用户名不能为空', 
+                'age.required'=>'年龄不能为空'
+            ]);
+        if($request->hasFile('avator') && $request->file('avator')->isValid()){
+            $filename = date('YmdHis').rand(100000,999999).'.'.$request->file('avator')->extension();
+            $request->file('avator')->move('./statics/upload',$filename);
+        }
+        $data = $request->only(['name','age','email']);
+        $data['avator'] = '/statics/upload/'.$filename;
+        $res = Member::insert($data);
+        if($res){
+            return '写入成功';
+        }else{
+            return '写入失败';
+        }
+    }
+    public function test10(){
+        $data = Member::paginate(2);
+        return view('test10',compact('data'));
+    }
     public function add(){
     	// dd(Input::get('name','qwertwq'));
     	$res = DB::table('member')->insert(['name'=>'lvjianjun','age'=>24,'email'=>'wafedsa']);
