@@ -30,6 +30,7 @@ return [
     ],
     'boolean'              => ':attribute 必须为布尔值。',
     'confirmed'            => ':attribute 两次输入不一致。',
+    'captcha'            => ':attribute 不匹配。',
     'date'                 => ':attribute 不是一个有效的日期。',
     'date_equals'          => ':attribute 必须要等于 :date。',
     'date_format'          => ':attribute 的格式必须为 :format。',
@@ -173,5 +174,6 @@ return [
         'time'                  => '时间',
         'available'             => '可用的',
         'size'                  => '大小',
+        'captcha'               => '验证码',
     ],
 ];

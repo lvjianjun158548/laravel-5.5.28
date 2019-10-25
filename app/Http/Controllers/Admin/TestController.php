@@ -53,7 +53,8 @@ class TestController extends Controller
         $this -> validate($request,[
             'name'=>'required|min:2|max:5',
             'age'=>'required|integer|min:1|max:100',
-            'email'=>'email'
+            'email'=>'email',
+            'captcha'=>'required|captcha'
             ],[ 'name.required'=>'用户名不能为空', 
                 'age.required'=>'年龄不能为空'
             ]);
@@ -73,6 +74,12 @@ class TestController extends Controller
     public function test10(){
         $data = Member::paginate(2);
         return view('test10',compact('data'));
+    }
+    public function test11(){
+        $faker = \Faker\Factory::create('zh_CN');
+        echo $faker->name;
+        echo $faker->address;
+        echo $faker->text;
     }
     public function add(){
     	// dd(Input::get('name','qwertwq'));
